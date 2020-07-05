@@ -745,7 +745,7 @@ class libc(AsanInstrumentedLibrary, MuslInternalLibrary, MTLibrary):
 
     # individual math files
     ignore += ['abs.c', 'round.c', 'roundf.c']
-    if not shared.Settings.WASM:
+    if not shared.Settings.WASM_BACKEND:
       # if building to wasm, we need more math code, since we have fewer builtins
       ignore += [
         'cos.c', 'cosf.c', 'cosl.c', 'sin.c', 'sinf.c', 'sinl.c',
