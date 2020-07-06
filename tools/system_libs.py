@@ -745,7 +745,8 @@ class libc(AsanInstrumentedLibrary, MuslInternalLibrary, MTLibrary):
 
     # individual math files
     if not shared.Settings.WASM_BACKEND:
-      # if building to wasm, we need more math code, since we have fewer builtins
+      # With fastcomp we exclude much of musl's math library and instead rely on hand
+      # written asm-js library functions.
       ignore += [
         'abs.c', 'round.c', 'roundf.c',
         'cos.c', 'cosf.c', 'cosl.c', 'sin.c', 'sinf.c', 'sinl.c',
